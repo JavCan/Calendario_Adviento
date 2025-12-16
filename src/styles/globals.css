@@ -148,3 +148,11 @@
     grid-row: 4 / 5;
   }
 }
+
+/* Estilo para los regalos que aún no se pueden abrir */
+.gift-box .disabled {
+    /* Reduce la opacidad para indicar que no está activo */
+    opacity: 0.5; 
+    /* Opcional: Desactiva cualquier sombra o borde extra para que se vea plano */
+    box-shadow: none !important; 
+}

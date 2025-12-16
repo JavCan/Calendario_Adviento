@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion} from 'motion/react';
+import { isDayOpenable } from '../utils/calendar-utils'; // Usar la extensión .ts es opcional aquí
 
 interface Gift {
   id: number;
@@ -57,19 +57,30 @@ export function GiftBox({ gift, isOpened, onOpen }: GiftBoxProps) {
   const pattern = patterns[gift.id - 1];
   const icon = icons[gift.id - 1];
 
-  const handleClick = () => {
-    if (!isOpened) {
-      onOpen();
-    }
-  };
+  // Determinar si el regalo está habilitado
+    const isEnabled = isDayOpenable(gift.id);
+
+const handleClick = () => {
+    if (!isOpened) { 
+      if (isEnabled) { // Solo si está habilitado
+        onOpen();
+      } else {
+        alert(`¡Aún no es el día! Tienes que esperar.`);
+      }
+     }
+   };
 
   return (
     <motion.div
-      className="w-full h-full cursor-pointer relative pixel-box"
+      className={`w-full h-full relative pixel-box ${isEnabled ? 'cursor-pointer' : 'cursor-not-allowed disabled'}`}
       onClick={handleClick}
-      whileHover={{ scale: isOpened ? 1 : 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      style={{ imageRendering: 'pixelated' }}
+      whileHover={{ scale: (isOpened || isEnabled) ? 1.05 : 1 }}
+      whileTap={{ scale: (isOpened || isEnabled) ? 0.95 : 1 }}
+      style={{ 
+        imageRendering: 'pixelated',
+        // --- CAMBIO SOLICITADO AQUÍ ---
+        opacity: isEnabled ? 1 : 0.5 
+      }}
     >
       {/* Card */}
       <div className="w-full h-full relative overflow-hidden" style={{

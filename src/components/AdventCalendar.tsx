@@ -29,23 +29,23 @@ export function AdventCalendar() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-full mx-auto">
       <div className="text-center mb-8 md:mb-12">
-        <h1 className="text-[#f4e4d7] mb-2 pixel-text text-4xl md:text-5xl" style={{ 
+        <h1 className="text-[#f4e4d7] mb-5 pixel-text text-4xl md:text-7xl" style={{ 
           textShadow: '4px 4px 0px #1a0f1b',
           imageRendering: 'pixelated'
         }}>
           Calendario de Adviento
         </h1>
-        <p className="text-[#d4a574] pixel-text text-lg md:text-xl" style={{ 
+        <p className="text-[#d4a574] pixel-text text-lg md:text-3xl" style={{ 
           textShadow: '2px 2px 0px #1a0f1b'
         }}>
-          10 días, 10 sorpresas
+          para ti mi Danna Hermosa :3
         </p>
       </div>
 
       {/* Custom grid layout similar to the image */}
-      <div className="grid grid-cols-7 gap-4 max-w-5xl mx-auto p-4" style={{ gridAutoRows: '180px' }}>
+      <div className="grid grid-cols-7 gap-4 w-full mx-auto" style={{ gridAutoRows: '250px' }}>
         <div><GiftBox gift={gifts[0]} isOpened={openedGifts.has(gifts[0].id)} onOpen={() => handleGiftOpen(gifts[0].id)} /></div>
         <div className="row-span-2 col-start-1 row-start-2"><GiftBox gift={gifts[1]} isOpened={openedGifts.has(gifts[1].id)} onOpen={() => handleGiftOpen(gifts[1].id)} /></div>
         <div className="col-span-2 col-start-1 row-start-4"><GiftBox gift={gifts[2]} isOpened={openedGifts.has(gifts[2].id)} onOpen={() => handleGiftOpen(gifts[2].id)} /></div>
@@ -58,7 +58,7 @@ export function AdventCalendar() {
         <div className="col-span-2 row-span-3 col-start-6 row-start-1"><GiftBox gift={gifts[9]} isOpened={openedGifts.has(gifts[9].id)} onOpen={() => handleGiftOpen(gifts[9].id)} /></div>
       </div>
 
-      <div className="mt-8 text-center">
+      <div className="mt-5 text-center">
         <p className="text-[#d4a574] pixel-text" style={{ 
           textShadow: '2px 2px 0px #1a0f1b',
           fontSize: '14px'
