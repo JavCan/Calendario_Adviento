@@ -1,24 +1,35 @@
 import { useState } from 'react';
 import { GiftBox } from './GiftBox';
 
+import gift1 from '../assets/1.png';
+import gift2 from '../assets/2.png';
+/*import gift3 from '../assets/3.png';
+import gift4 from '../assets/4.png';
+import gift5 from '../assets/5.png';
+import gift6 from '../assets/6.png';
+import gift7 from '../assets/7.png';
+import gift8 from '../assets/8.png';
+import gift9 from '../assets/9.png';
+import gift10 from '../assets/10.png'; */
+
 interface Gift {
   id: number;
   size: 'small' | 'medium' | 'large';
   color: 'red' | 'green' | 'gold' | 'blue';
-  message: string;
+  imagePath: string;
 }
 
 const gifts: Gift[] = [
-  { id: 1, size: 'small', color: 'green', message: 'Cada día contigo es un regalo especial' },
-  { id: 2, size: 'large', color: 'red', message: 'Tu sonrisa ilumina mis días' },
-  { id: 3, size: 'small', color: 'gold', message: 'Gracias por estar a mi lado' },
-  { id: 4, size: 'medium', color: 'red', message: 'Eres mi persona favorita' },
-  { id: 5, size: 'small', color: 'red', message: 'Contigo todo es mejor' },
-  { id: 6, size: 'large', color: 'gold', message: 'Me encanta compartir momentos contigo' },
-  { id: 7, size: 'small', color: 'green', message: 'Eres increíble, no lo olvides' },
-  { id: 8, size: 'medium', color: 'green', message: 'Cada momento juntos es valioso' },
-  { id: 9, size: 'small', color: 'blue', message: 'Tu compañía es mi lugar favorito' },
-  { id: 10, size: 'large', color: 'blue', message: 'Que este sea un diciembre lleno de buenos momentos juntos' },
+  { id: 1, size: 'small', color: 'green', imagePath: gift1 },
+  { id: 2, size: 'large', color: 'red', imagePath: gift2 },
+  { id: 3, size: 'small', color: 'gold', imagePath: '../assets/3.png' },
+  { id: 4, size: 'medium', color: 'red', imagePath: '../assets/4.png' },
+  { id: 5, size: 'small', color: 'red', imagePath: '../assets/5.png' },
+  { id: 6, size: 'large', color: 'gold', imagePath: '../assets/6.png' },
+  { id: 7, size: 'small', color: 'green', imagePath: '../assets/7.png' },
+  { id: 8, size: 'medium', color: 'green', imagePath: '../assets/8.png' },
+  { id: 9, size: 'small', color: 'blue', imagePath: '../assets/9.png' },
+  { id: 10, size: 'large', color: 'blue', imagePath: '../assets/10.png' },
 ];
 
 export function AdventCalendar() {
@@ -70,9 +81,9 @@ export function AdventCalendar() {
           textShadow: '2px 2px 0px #1a0f1b',
           fontSize: '14px'
         }}>
-          {openedCount === 0 && 'Haz clic en los regalos para abrirlos'}
+          {openedCount === 0 && 'Clickea los regalos para abrirlos mi amor :3'}
           {openedCount > 0 && openedCount < 10 && `${openedCount} de 10 abiertos`}
-          {openedCount === 10 && '¡Todos los regalos abiertos! 💝'}
+          {openedCount === 10 && '¡TE AMO, FELIZ NOCHEBUENA! 💝'}
         </p>
         
         {/* Barra de progreso delgada */}

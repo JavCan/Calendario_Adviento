@@ -5,7 +5,7 @@ interface Gift {
   id: number;
   size: 'small' | 'medium' | 'large';
   color: 'red' | 'green' | 'gold' | 'blue';
-  message: string;
+  imagePath: string;
 }
 
 interface GiftBoxProps {
@@ -247,19 +247,18 @@ const handleClick = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="absolute inset-0 p-4 flex flex-col items-center justify-center"
+            className="absolute inset-0 p-0 flex flex-col items-center justify-center"
             style={{
               background: `linear-gradient(135deg, ${colors.bg} 0%, ${colors.bgDark} 100%)`
             }}
           >
             <div className="text-center">
-              <div className="mb-3 text-3xl">💝</div>
               <p className="text-[#e8d5c4] pixel-text" style={{ 
                 fontSize: gift.size === 'small' ? '11px' : gift.size === 'medium' ? '13px' : '14px',
                 lineHeight: '1.5',
                 textShadow: '2px 2px 0px rgba(0, 0, 0, 0.5)'
               }}>
-                {gift.message}
+                <img src={gift.imagePath} alt={`Gift ${gift.id}`} className="w-auto h-auto" />
               </p>
             </div>
           </motion.div>
