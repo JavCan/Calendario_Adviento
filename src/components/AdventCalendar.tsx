@@ -27,6 +27,11 @@ export function AdventCalendar() {
   const handleGiftOpen = (id: number) => {
     setOpenedGifts(prev => new Set([...prev, id]));
   };
+  
+  // --- Cálculo del progreso ---
+  const openedCount = openedGifts.size;
+  const totalGifts = gifts.length; // 10 regalos
+  const progressPercentage = (openedCount / totalGifts) * 100;
 
   return (
     <div className="max-w-full mx-auto">
@@ -58,15 +63,28 @@ export function AdventCalendar() {
         <div className="col-span-2 row-span-3 col-start-6 row-start-1"><GiftBox gift={gifts[9]} isOpened={openedGifts.has(gifts[9].id)} onOpen={() => handleGiftOpen(gifts[9].id)} /></div>
       </div>
 
+      {/* Barra de progreso (Reemplaza el texto) */}
       <div className="mt-5 text-center">
-        <p className="text-[#d4a574] pixel-text" style={{ 
+        {/* Texto de estado (informativo) */}
+        <p className="text-[#d4a574] pixel-text mb-2" style={{ 
           textShadow: '2px 2px 0px #1a0f1b',
           fontSize: '14px'
         }}>
-          {openedGifts.size === 0 && 'Haz clic en los regalos para abrirlos'}
-          {openedGifts.size > 0 && openedGifts.size < 10 && `${openedGifts.size} de 10 abiertos`}
-          {openedGifts.size === 10 && '¡Todos los regalos abiertos! 💝'}
+          {openedCount === 0 && 'Haz clic en los regalos para abrirlos'}
+          {openedCount > 0 && openedCount < 10 && `${openedCount} de 10 abiertos`}
+          {openedCount === 10 && '¡Todos los regalos abiertos! 💝'}
         </p>
+        
+        {/* Barra de progreso delgada */}
+        <div className="w-full mx-auto h-3 border-2 border-[#1a0f1b] bg-[#4a3a4b] rounded-full overflow-hidden shadow-lg">
+          <div 
+            className="h-full bg-gradient-to-r from-[#d4a574] to-[#c59e3a]" 
+            style={{ 
+              width: `${progressPercentage}%`,
+              transition: 'width 0.5s ease-in-out'
+            }}
+          />
+        </div>
       </div>
     </div>
   );
