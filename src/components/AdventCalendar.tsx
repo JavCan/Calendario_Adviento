@@ -75,7 +75,7 @@ export function AdventCalendar() {
       </div>
 
       {/* Barra de progreso (Reemplaza el texto) */}
-      <div className="mt-5 text-center">
+      <div className="mt-3 text-center">
         {/* Texto de estado (informativo) */}
         <p className="text-[#d4a574] pixel-text mb-2" style={{ 
           textShadow: '2px 2px 0px #1a0f1b',
