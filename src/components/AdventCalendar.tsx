@@ -61,7 +61,7 @@ export function AdventCalendar() {
       </div>
 
       {/* Custom grid layout similar to the image */}
-      <div className="grid grid-cols-7 gap-4 w-full mx-auto" style={{ gridAutoRows: '200px' }}>
+      <div className="grid grid-cols-7 gap-4 w-full mx-auto" style={{ gridAutoRows: '180px' }}>
         <div><GiftBox gift={gifts[0]} isOpened={openedGifts.has(gifts[0].id)} onOpen={() => handleGiftOpen(gifts[0].id)} /></div>
         <div className="row-span-2 col-start-1 row-start-2"><GiftBox gift={gifts[1]} isOpened={openedGifts.has(gifts[1].id)} onOpen={() => handleGiftOpen(gifts[1].id)} /></div>
         <div className="col-span-2 col-start-1 row-start-4"><GiftBox gift={gifts[2]} isOpened={openedGifts.has(gifts[2].id)} onOpen={() => handleGiftOpen(gifts[2].id)} /></div>
