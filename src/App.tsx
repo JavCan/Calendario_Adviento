@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { AdventCalendar } from './components/AdventCalendar.tsx';
 
 export default function App() {
