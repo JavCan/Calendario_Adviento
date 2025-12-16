@@ -16,40 +16,46 @@ interface GiftBoxProps {
 
 const colorSchemes = {
   red: {
-    box: '#a03a3a',
-    boxDark: '#6b2727',
-    ribbon: '#d4a574',
-    ribbonDark: '#b08a5c'
+    bg: '#9d5353',
+    bgDark: '#7a3f3f',
+    accent: '#e8d5c4'
   },
   green: {
-    box: '#5a7a4a',
-    boxDark: '#3d5232',
-    ribbon: '#c94a4a',
-    ribbonDark: '#a03838'
+    bg: '#7a9d8e',
+    bgDark: '#5f7a6f',
+    accent: '#e8d5c4'
   },
   gold: {
-    box: '#d4a574',
-    boxDark: '#b08a5c',
-    ribbon: '#a0503a',
-    ribbonDark: '#7a3a2a'
+    bg: '#c9b8a0',
+    bgDark: '#a89880',
+    accent: '#9d5353'
   },
   blue: {
-    box: '#4a6a8a',
-    boxDark: '#325070',
-    ribbon: '#f4e4d7',
-    ribbonDark: '#d4c4b7'
+    bg: '#6b8090',
+    bgDark: '#556570',
+    accent: '#e8d5c4'
   }
 };
 
-const sizeClasses = {
-  small: 'aspect-square',
-  medium: 'aspect-[1/1.5]',
-  large: 'aspect-[2/1]'
-};
+const patterns = [
+  'diagonal-stripes',
+  'dots',
+  'zigzag',
+  'solid',
+  'chevron',
+  'stars',
+  'waves',
+  'grid',
+  'solid',
+  'diagonal-stripes'
+];
+
+const icons = ['🎄', '⭐', '🎅', '🎁', '🔔', '❄️', '🕯️', '🧦', '🍪', '☕'];
 
 export function GiftBox({ gift, isOpened, onOpen }: GiftBoxProps) {
-  const [showMessage, setShowMessage] = useState(false);
   const colors = colorSchemes[gift.color];
+  const pattern = patterns[gift.id - 1];
+  const icon = icons[gift.id - 1];
 
   const handleClick = () => {
     if (!isOpened) {
@@ -65,68 +71,164 @@ export function GiftBox({ gift, isOpened, onOpen }: GiftBoxProps) {
       whileTap={{ scale: 0.95 }}
       style={{ imageRendering: 'pixelated' }}
     >
-      {/* Gift Box */}
-      <div className="w-full h-full relative" style={{
-        background: `linear-gradient(135deg, ${colors.box} 0%, ${colors.boxDark} 100%)`,
-        boxShadow: `
-          inset -4px -4px 0px ${colors.boxDark},
-          inset 4px 4px 0px ${colors.box},
-          6px 6px 0px rgba(0, 0, 0, 0.3)
-        `,
-        border: `3px solid ${colors.boxDark}`,
-        opacity: isOpened ? 0.95 : 1
+      {/* Card */}
+      <div className="w-full h-full relative overflow-hidden" style={{
+        background: colors.bg,
+        border: `4px solid ${colors.bgDark}`,
+        boxShadow: '4px 4px 0px rgba(0, 0, 0, 0.4)',
+        borderRadius: '8px'
       }}>
         
         {!isOpened ? (
           <>
-            {/* Ribbon Horizontal */}
-            <div className="absolute top-1/2 left-0 right-0 h-6 -translate-y-1/2" style={{
-              background: `linear-gradient(180deg, ${colors.ribbon} 0%, ${colors.ribbonDark} 100%)`,
-              boxShadow: `
-                inset 0 -2px 0px ${colors.ribbonDark},
-                inset 0 2px 0px ${colors.ribbon}
-              `,
-              border: `2px solid ${colors.ribbonDark}`
-            }} />
-
-            {/* Ribbon Vertical */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-6 -translate-x-1/2" style={{
-              background: `linear-gradient(90deg, ${colors.ribbon} 0%, ${colors.ribbonDark} 100%)`,
-              boxShadow: `
-                inset -2px 0 0px ${colors.ribbonDark},
-                inset 2px 0 0px ${colors.ribbon}
-              `,
-              border: `2px solid ${colors.ribbonDark}`
-            }} />
-
-            {/* Bow */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-1">
-              <div className="w-4 h-4" style={{
-                background: colors.ribbon,
-                border: `2px solid ${colors.ribbonDark}`,
-                boxShadow: `2px 2px 0px ${colors.ribbonDark}`
-              }} />
-              <div className="w-4 h-4" style={{
-                background: colors.ribbon,
-                border: `2px solid ${colors.ribbonDark}`,
-                boxShadow: `2px 2px 0px ${colors.ribbonDark}`
-              }} />
+            {/* Pattern Background */}
+            <div className="absolute inset-0" style={{ opacity: 0.3 }}>
+              {pattern === 'diagonal-stripes' && (
+                <div className="w-full h-full" style={{
+                  backgroundImage: `repeating-linear-gradient(
+                    45deg,
+                    ${colors.bgDark},
+                    ${colors.bgDark} 10px,
+                    transparent 10px,
+                    transparent 20px
+                  )`
+                }} />
+              )}
+              {pattern === 'dots' && (
+                <div className="w-full h-full" style={{
+                  backgroundImage: `radial-gradient(circle, ${colors.bgDark} 2px, transparent 2px)`,
+                  backgroundSize: '20px 20px'
+                }} />
+              )}
+              {pattern === 'zigzag' && (
+                <div className="w-full h-full" style={{
+                  backgroundImage: `repeating-linear-gradient(
+                    135deg,
+                    ${colors.bgDark} 0px,
+                    ${colors.bgDark} 8px,
+                    transparent 8px,
+                    transparent 16px,
+                    ${colors.bgDark} 16px
+                  )`
+                }} />
+              )}
+              {pattern === 'chevron' && (
+                <div className="w-full h-full" style={{
+                  backgroundImage: `repeating-linear-gradient(
+                    90deg,
+                    ${colors.bgDark},
+                    ${colors.bgDark} 15px,
+                    transparent 15px,
+                    transparent 30px
+                  )`
+                }} />
+              )}
+              {pattern === 'stars' && (
+                <div className="w-full h-full flex flex-wrap gap-4 p-2">
+                  <span style={{ color: colors.bgDark, fontSize: '12px' }}>✦</span>
+                  <span style={{ color: colors.bgDark, fontSize: '12px' }}>✦</span>
+                  <span style={{ color: colors.bgDark, fontSize: '12px' }}>✦</span>
+                  <span style={{ color: colors.bgDark, fontSize: '12px' }}>✦</span>
+                </div>
+              )}
+              {pattern === 'waves' && (
+                <div className="w-full h-full" style={{
+                  backgroundImage: `repeating-linear-gradient(
+                    0deg,
+                    ${colors.bgDark} 0px,
+                    transparent 5px,
+                    transparent 10px,
+                    ${colors.bgDark} 15px
+                  )`
+                }} />
+              )}
+              {pattern === 'grid' && (
+                <div className="w-full h-full" style={{
+                  backgroundImage: `
+                    linear-gradient(${colors.bgDark} 2px, transparent 2px),
+                    linear-gradient(90deg, ${colors.bgDark} 2px, transparent 2px)
+                  `,
+                  backgroundSize: '25px 25px'
+                }} />
+              )}
             </div>
 
-            {/* Day Number */}
-            <div className="absolute bottom-2 right-2 w-10 h-10 flex items-center justify-center" style={{
-              background: '#f4e4d7',
-              border: '3px solid #2d1b2e',
-              boxShadow: '3px 3px 0px rgba(0, 0, 0, 0.3)',
-              imageRendering: 'pixelated'
-            }}>
-              <span className="pixel-text" style={{ 
-                color: '#2d1b2e',
-                fontSize: '20px',
-                fontWeight: 'bold'
+            {/* Content */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
+              {/* Bow at the top */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-end gap-1">
+                {/* Left bow */}
+                <div style={{
+                  width: '20px',
+                  height: '20px',
+                  background: colors.accent,
+                  border: `3px solid ${colors.bgDark}`,
+                  borderRadius: '50% 50% 0 50%',
+                  transform: 'rotate(-45deg)',
+                  boxShadow: '2px 2px 0px rgba(0, 0, 0, 0.3)'
+                }} />
+                
+                {/* Center knot */}
+                <div style={{
+                  width: '12px',
+                  height: '12px',
+                  background: colors.accent,
+                  border: `3px solid ${colors.bgDark}`,
+                  borderRadius: '50%',
+                  boxShadow: '2px 2px 0px rgba(0, 0, 0, 0.3)',
+                  marginBottom: '-4px',
+                  zIndex: 2
+                }} />
+                
+                {/* Right bow */}
+                <div style={{
+                  width: '20px',
+                  height: '20px',
+                  background: colors.accent,
+                  border: `3px solid ${colors.bgDark}`,
+                  borderRadius: '50% 50% 50% 0',
+                  transform: 'rotate(45deg)',
+                  boxShadow: '2px 2px 0px rgba(0, 0, 0, 0.3)'
+                }} />
+              </div>
+
+              {/* Ribbon vertical */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 h-full" style={{
+                width: '12px',
+                background: `linear-gradient(90deg, ${colors.accent} 0%, ${colors.bgDark} 50%, ${colors.accent} 100%)`,
+                opacity: 0.4,
+                borderLeft: `2px solid ${colors.bgDark}`,
+                borderRight: `2px solid ${colors.bgDark}`
+              }} />
+              
+              {/* Icon */}
+              <div className="mb-2 text-4xl relative z-10" style={{ 
+                filter: 'drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3))',
+                opacity: 0.9
               }}>
+                {icon}
+              </div>
+              
+              {/* Day Number */}
+              <div 
+                className="pixel-text relative z-10" 
+                style={{ 
+                  color: colors.accent,
+                  fontSize: '48px',
+                  fontWeight: 'bold',
+                  textShadow: `3px 3px 0px ${colors.bgDark}, 4px 4px 0px rgba(0, 0, 0, 0.3)`,
+                  lineHeight: '1'
+                }}
+              >
                 {gift.id}
-              </span>
+              </div>
+
+              {/* Small decorative stars */}
+              {gift.id % 3 === 0 && (
+                <div className="absolute top-2 right-2 text-xs z-10" style={{ color: colors.accent, opacity: 0.6 }}>
+                  ✦ ✦
+                </div>
+              )}
             </div>
           </>
         ) : (
@@ -135,10 +237,13 @@ export function GiftBox({ gift, isOpened, onOpen }: GiftBoxProps) {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             className="absolute inset-0 p-4 flex flex-col items-center justify-center"
+            style={{
+              background: `linear-gradient(135deg, ${colors.bg} 0%, ${colors.bgDark} 100%)`
+            }}
           >
             <div className="text-center">
               <div className="mb-3 text-3xl">💝</div>
-              <p className="text-[#f4e4d7] pixel-text" style={{ 
+              <p className="text-[#e8d5c4] pixel-text" style={{ 
                 fontSize: gift.size === 'small' ? '11px' : gift.size === 'medium' ? '13px' : '14px',
                 lineHeight: '1.5',
                 textShadow: '2px 2px 0px rgba(0, 0, 0, 0.5)'

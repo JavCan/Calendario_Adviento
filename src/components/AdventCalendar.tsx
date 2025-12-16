@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { GiftBox } from './GiftBox.tsx';
+import { GiftBox } from './GiftBox';
 
 interface Gift {
   id: number;
@@ -9,16 +9,16 @@ interface Gift {
 }
 
 const gifts: Gift[] = [
-  { id: 1, size: 'small', color: 'red', message: 'Cada día contigo es un regalo especial' },
+  { id: 1, size: 'small', color: 'green', message: 'Cada día contigo es un regalo especial' },
   { id: 2, size: 'large', color: 'red', message: 'Tu sonrisa ilumina mis días' },
   { id: 3, size: 'small', color: 'gold', message: 'Gracias por estar a mi lado' },
-  { id: 4, size: 'medium', color: 'green', message: 'Eres mi persona favorita' },
+  { id: 4, size: 'medium', color: 'red', message: 'Eres mi persona favorita' },
   { id: 5, size: 'small', color: 'red', message: 'Contigo todo es mejor' },
   { id: 6, size: 'large', color: 'gold', message: 'Me encanta compartir momentos contigo' },
-  { id: 7, size: 'small', color: 'blue', message: 'Eres increíble, no lo olvides' },
+  { id: 7, size: 'small', color: 'green', message: 'Eres increíble, no lo olvides' },
   { id: 8, size: 'medium', color: 'green', message: 'Cada momento juntos es valioso' },
-  { id: 9, size: 'small', color: 'red', message: 'Tu compañía es mi lugar favorito' },
-  { id: 10, size: 'large', color: 'gold', message: 'Que este sea un diciembre lleno de buenos momentos juntos' },
+  { id: 9, size: 'small', color: 'blue', message: 'Tu compañía es mi lugar favorito' },
+  { id: 10, size: 'large', color: 'blue', message: 'Que este sea un diciembre lleno de buenos momentos juntos' },
 ];
 
 export function AdventCalendar() {
