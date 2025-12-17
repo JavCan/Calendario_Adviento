@@ -65,7 +65,7 @@ const handleClick = () => {
       if (isEnabled) { // Solo si está habilitado
         onOpen();
       } else {
-        alert(`¡Aún no es el día! Tienes que esperar.`);
+        alert(`¡Aún no es el día! Espera un mini más mi amor :).`);
       }
      }
    };
