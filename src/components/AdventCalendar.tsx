@@ -4,8 +4,8 @@ import { GiftBox } from './GiftBox';
 import gift1 from '../assets/1.png';
 import gift2 from '../assets/2.png';
 import gift3 from '../assets/3.png';
-/*import gift4 from '../assets/4.png';
-import gift5 from '../assets/5.png';
+import gift4 from '../assets/4.png';
+/*import gift5 from '../assets/5.png';
 import gift6 from '../assets/6.png';
 import gift7 from '../assets/7.png';
 import gift8 from '../assets/8.png';
@@ -23,7 +23,7 @@ const gifts: Gift[] = [
   { id: 1, size: 'small', color: 'green', imagePath: gift1 },
   { id: 2, size: 'large', color: 'red', imagePath: gift2 },
   { id: 3, size: 'small', color: 'gold', imagePath: gift3 },
-  { id: 4, size: 'medium', color: 'red', imagePath: '../assets/4.png' },
+  { id: 4, size: 'medium', color: 'red', imagePath: gift4 },
   { id: 5, size: 'small', color: 'red', imagePath: '../assets/5.png' },
   { id: 6, size: 'large', color: 'gold', imagePath: '../assets/6.png' },
   { id: 7, size: 'small', color: 'green', imagePath: '../assets/7.png' },
