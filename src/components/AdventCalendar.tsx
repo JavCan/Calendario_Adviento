@@ -8,8 +8,8 @@ import gift4 from '../assets/4.png';
 import gift5 from '../assets/5.png';
 import gift6 from '../assets/6.png';
 import gift7 from '../assets/7.png';
-/*import gift8 from '../assets/8.png';
-import gift9 from '../assets/9.png';
+import gift8 from '../assets/8.png';
+/*import gift9 from '../assets/9.png';
 import gift10 from '../assets/10.png'; */
 
 interface Gift {
@@ -27,7 +27,7 @@ const gifts: Gift[] = [
   { id: 5, size: 'small', color: 'red', imagePath: gift5 },
   { id: 6, size: 'large', color: 'gold', imagePath: gift6 },
   { id: 7, size: 'small', color: 'green', imagePath: gift7 },
-  { id: 8, size: 'medium', color: 'green', imagePath: '../assets/8.png' },
+  { id: 8, size: 'medium', color: 'green', imagePath: gift8 },
   { id: 9, size: 'small', color: 'blue', imagePath: '../assets/9.png' },
   { id: 10, size: 'large', color: 'blue', imagePath: '../assets/10.png' },
 ];
