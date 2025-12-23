@@ -9,8 +9,8 @@ import gift5 from '../assets/5.png';
 import gift6 from '../assets/6.png';
 import gift7 from '../assets/7.png';
 import gift8 from '../assets/8.png';
-/*import gift9 from '../assets/9.png';
-import gift10 from '../assets/10.png'; */
+import gift9 from '../assets/9.png';
+//import gift10 from '../assets/10.png';
 
 interface Gift {
   id: number;
@@ -28,7 +28,7 @@ const gifts: Gift[] = [
   { id: 6, size: 'large', color: 'gold', imagePath: gift6 },
   { id: 7, size: 'small', color: 'green', imagePath: gift7 },
   { id: 8, size: 'medium', color: 'green', imagePath: gift8 },
-  { id: 9, size: 'small', color: 'blue', imagePath: '../assets/9.png' },
+  { id: 9, size: 'small', color: 'blue', imagePath: gift9 },
   { id: 10, size: 'large', color: 'blue', imagePath: '../assets/10.png' },
 ];
 
@@ -83,7 +83,7 @@ export function AdventCalendar() {
         }}>
           {openedCount === 0 && 'Clickea los regalos para abrirlos mi amor :3'}
           {openedCount > 0 && openedCount < 10 && `${openedCount} de 10 abiertos`}
-          {openedCount === 10 && '¡TE AMO, FELIZ NOCHEBUENA! 💝'}
+          {openedCount === 10 && '¡TE AMO, FELIZ NOCHEBUENA MI AMOR! 💝'}
         </p>
         
         {/* Barra de progreso delgada */}
