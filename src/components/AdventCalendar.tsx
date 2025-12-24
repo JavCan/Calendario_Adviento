@@ -10,7 +10,7 @@ import gift6 from '../assets/6.png';
 import gift7 from '../assets/7.png';
 import gift8 from '../assets/8.png';
 import gift9 from '../assets/9.png';
-//import gift10 from '../assets/10.png';
+import gift10 from '../assets/10.png';
 
 interface Gift {
   id: number;
@@ -29,7 +29,7 @@ const gifts: Gift[] = [
   { id: 7, size: 'small', color: 'green', imagePath: gift7 },
   { id: 8, size: 'medium', color: 'green', imagePath: gift8 },
   { id: 9, size: 'small', color: 'blue', imagePath: gift9 },
-  { id: 10, size: 'large', color: 'blue', imagePath: '../assets/10.png' },
+  { id: 10, size: 'large', color: 'blue', imagePath: gift10 },
 ];
 
 export function AdventCalendar() {
